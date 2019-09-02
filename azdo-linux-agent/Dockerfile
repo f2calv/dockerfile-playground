@@ -20,8 +20,7 @@ RUN apt-get update \
 
 WORKDIR /azp
 
-#COPY ./start.sh .
-COPY AzurePipelines/CASBuildAgent/start.sh .
+COPY ./start.sh .
 RUN chmod +x start.sh
 
 CMD ["./start.sh"]
