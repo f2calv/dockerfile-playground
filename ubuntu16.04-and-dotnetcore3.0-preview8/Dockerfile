@@ -1,4 +1,4 @@
-#This is a Dockerfile to install .net core 3.0 with the absolute minimum of additional components.
+#This is a Dockerfile to install .NET Core 3.0 Preview 8 with the absolute minimum of additional components on an ubuntu base image.
 #https://dotnet.microsoft.com/download/dotnet-core/3.0
 #https://github.com/dotnet/core/blob/master/Documentation/linux-prereqs.md
 #https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-preview8-linux-x64-binaries
