@@ -18,4 +18,9 @@ RUN apt-get update \
 RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/498b8b41-7626-435e-bea8-878c39ccbbf3/c8df08e881d1bcf9a49a9ff5367090cc/dotnet-sdk-3.0.100-preview9-014004-linux-x64.tar.gz
 RUN sudo mkdir -p /usr/share/dotnet && sudo tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet && sudo ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
+RUN dotnet tool install -g dotnet-reportgenerator-globaltool
+# Add .NET Core SDK tools
+#RUN export PATH="$PATH:/root/.dotnet/tools"
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
 ENTRYPOINT ["/bin/bash"]
