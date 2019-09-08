@@ -24,7 +24,10 @@ RUN apt-get update \
 
 #install .NET Core 3.0 Preview 8
 RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/a0e368ac-7161-4bde-a139-1a3ef5a82bbe/439cdbb58950916d3718771c5d986c35/dotnet-sdk-3.0.100-preview8-013656-linux-x64.tar.gz
-RUN sudo mkdir -p /usr/share/dotnet && sudo tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet && sudo ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+RUN mkdir -p /usr/share/dotnet \
+    && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
+    && rm /tmp/dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # Add .NET Core SDK tools
 RUN export PATH="$PATH:/root/.dotnet/tools"

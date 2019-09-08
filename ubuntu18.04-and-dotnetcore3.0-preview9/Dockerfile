@@ -12,11 +12,13 @@ RUN apt-get update \
     && apt-get install --no-install-recommends \
         curl \
         software-properties-common \
-        sudo \
         libicu60 \
         openssl1.0
 
 RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/498b8b41-7626-435e-bea8-878c39ccbbf3/c8df08e881d1bcf9a49a9ff5367090cc/dotnet-sdk-3.0.100-preview9-014004-linux-x64.tar.gz
-RUN sudo mkdir -p /usr/share/dotnet && sudo tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet && sudo ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+RUN mkdir -p /usr/share/dotnet \
+    && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
+    && rm /tmp/dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 ENTRYPOINT ["/bin/bash"]
