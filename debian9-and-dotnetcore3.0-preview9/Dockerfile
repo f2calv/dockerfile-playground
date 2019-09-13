@@ -39,8 +39,12 @@ ENV ASPNETCORE_URLS=http://+:80 \
     # Add .NET Core SDK tools
     PATH="${PATH}:/root/.dotnet/tools"
 
+#add extra tools - see https://github.com/natemcmaster/dotnet-tools
+RUN dotnet tool install -g dotnet-reportgenerator-globaltool \
+    && dotnet tool install -g coverlet.console
+    && dotnet tool install -g GitVersion.Tool
+
 # Trigger first run experience by running arbitrary cmd to populate local package cache
 RUN dotnet help
-RUN dotnet tool install -g dotnet-reportgenerator-globaltool
 
 ENTRYPOINT ["/bin/bash"]
