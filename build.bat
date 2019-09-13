@@ -19,8 +19,12 @@
 ::cd azdo-linux-agent-dotnetcore3.0-preview9
 ::docker build -t f2calvdev:latest .
 
+docker build -t f2calvdev:latest -f ubuntu16.04-and-docker-socket/Dockerfile .
 
-docker run --name f2calvdev --rm -it f2calvdev:latest
+
+docker run --name f2calvdev --rm -it -v /var/run/docker.sock:/var/run/docker.sock f2calvdev:latest
+
+::dive f2calvdev:latest
 ::docker image rm f2calvdev:latest
 
 ::docker exec -it
