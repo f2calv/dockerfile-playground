@@ -11,18 +11,18 @@ RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update \
     && apt-get install --no-install-recommends \
-        curl \
-        software-properties-common \
-        # Install .NET CLI dependencies
-        \
-        libicu57 \
-        libssl1.0.2 \
+    curl \
+    software-properties-common \
+    # Install .NET CLI dependencies
+    \
+    libicu57 \
+    libssl1.0.2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install .NET Core SDK
-ENV DOTNET_SDK_VERSION 3.0.100-preview9-014004
+ENV DOTNET_SDK_VERSION 3.0.100
 
-RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/498b8b41-7626-435e-bea8-878c39ccbbf3/c8df08e881d1bcf9a49a9ff5367090cc/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz
+RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz
 RUN mkdir -p /usr/share/dotnet \
     && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
     && rm /tmp/dotnet.tar.gz \
@@ -41,7 +41,7 @@ ENV ASPNETCORE_URLS=http://+:80 \
 
 #add extra tools - see https://github.com/natemcmaster/dotnet-tools
 RUN dotnet tool install -g dotnet-reportgenerator-globaltool \
-    && dotnet tool install -g coverlet.console
+    && dotnet tool install -g coverlet.console \
     && dotnet tool install -g GitVersion.Tool
 
 # Trigger first run experience by running arbitrary cmd to populate local package cache

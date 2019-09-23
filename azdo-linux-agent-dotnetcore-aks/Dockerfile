@@ -9,23 +9,23 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
 RUN apt-get update \
-        && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        curl \
-        jq \
-        git \
-        iputils-ping \
-        libcurl3 \
-        libicu55 \
-        libunwind8 \
-        netcat \
-        software-properties-common \
-        sudo \
-        apt-transport-https \
-        gnupg-agent \
-		unzip \
-		lsb-release \
-		gnupg
+    && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    jq \
+    git \
+    iputils-ping \
+    libcurl3 \
+    libicu55 \
+    libunwind8 \
+    netcat \
+    software-properties-common \
+    sudo \
+    apt-transport-https \
+    gnupg-agent \
+    unzip \
+    lsb-release \
+    gnupg
 
 #region - start customisations
 
@@ -57,13 +57,13 @@ RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | \
 RUN sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | \
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 RUN sudo apt-get update \
-	&& sudo apt-get install azure-cli nuget
+    && sudo apt-get install azure-cli nuget
 
 #install .net core sdk
 ENV DOTNET_SDK_VERSION 3.0.100-preview9-014004
 RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/498b8b41-7626-435e-bea8-878c39ccbbf3/c8df08e881d1bcf9a49a9ff5367090cc/dotnet-sdk-$DOTNET_SDK_VERSION-linux-x64.tar.gz
 RUN sudo mkdir -p /usr/share/dotnet \
-	&& sudo tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
+    && sudo tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
     && sudo rm /tmp/dotnet.tar.gz \
     && sudo ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
@@ -83,7 +83,7 @@ ENV ASPNETCORE_URLS=http://+:80 \
 RUN dotnet tool install -g dotnet-reportgenerator-globaltool \
     && dotnet tool install -g coverlet.console \
     && dotnet tool install -g GitVersion.Tool \
-	&& dotnet tool install -g dotnet-sonarscanner
+    && dotnet tool install -g dotnet-sonarscanner
 
 # Trigger first run experience by running arbitrary cmd to populate local package cache
 RUN dotnet help
