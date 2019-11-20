@@ -23,7 +23,7 @@ RUN apt-get update \
 #region - start customisations
 
 #install .NET Core 3.0
-RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
+RUN curl -SL -o /tmp/dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/release/3.0.1xx/dotnet-sdk-latest-linux-x64.tar.gz
 RUN mkdir -p /usr/share/dotnet \
         && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
         && rm /tmp/dotnet.tar.gz \
