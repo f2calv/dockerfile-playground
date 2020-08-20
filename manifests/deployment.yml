@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "deltron9-e2fd"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "deltron9-e2fd"
+    spec:
+      containers:
+        - name: "deltron9-e2fd"
+          image: "cascap.azurecr.io/deltron9"
+          ports:
+          - containerPort: 80
