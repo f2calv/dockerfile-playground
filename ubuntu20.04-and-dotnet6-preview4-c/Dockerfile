@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/runtime-deps:6.0
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-#https://github.com/dotnet/core/blob/master/Documentation/linux-prereqs.md
+#https://docs.microsoft.com/en-us/dotnet/core/install/linux
 RUN apt-get update \
     && apt-get install --no-install-recommends \
         curl
