@@ -14,12 +14,10 @@ RUN apt-get update \
         software-properties-common \
         openssl1.1
 
-#.NET install
-#https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
-RUN curl -sL -o /usr/bin/dotnet-install.sh https://dot.net/v1/dotnet-install.sh \
-    && chmod +x /usr/bin/dotnet-install.sh \
-    && dotnet-install.sh -c 6.0 -v latest --install-dir /usr/share/dotnet/ \
-    && rm /usr/bin/dotnet-install.sh \
+RUN curl -SL -o /tmp/dotnet.tar.gz https://download.visualstudio.microsoft.com/download/pr/f5c00d7a-e1c8-494a-a88b-9ed1dc62249e/8438122af4fd928900a0ebf129c6c1d6/dotnet-sdk-6.0.100-preview.4.21255.9-linux-x64.tar.gz \
+    && mkdir -p /usr/share/dotnet \
+    && tar -zxf /tmp/dotnet.tar.gz -C /usr/share/dotnet \
+    && rm /tmp/dotnet.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
     && dotnet --list-sdks
 
