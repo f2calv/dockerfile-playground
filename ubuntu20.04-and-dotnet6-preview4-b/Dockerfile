@@ -1,13 +1,11 @@
 #This is a Dockerfile to install .NET 6.0 Preview 4 with the absolute minimum of additional components on an ubuntu base image.
-#https://dotnet.microsoft.com/download/dotnet-core/3.0
-#https://github.com/dotnet/core/blob/master/Documentation/linux-prereqs.md
-#https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-3.0.100-preview9-linux-x64-binaries
 FROM ubuntu:20.04
 
 # configure apt to not require confirmation (assume the -y argument by default)
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
+#https://github.com/dotnet/core/blob/master/Documentation/linux-prereqs.md
 RUN apt-get update \
     && apt-get install --no-install-recommends \
         curl \

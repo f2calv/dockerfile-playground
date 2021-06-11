@@ -14,13 +14,13 @@ Most recent addition for .NET 6.0;
 ```pwsh
 #build Ubuntu 20.04 w/.NET 6.0 SDK Preview 4
 
-#installing the binary into a ubuntu20.04 base image, with manually added dependencies
+#installing the binary into a ubuntu20.04 base image, with additional dependencies
 docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-a\Dockerfile .
 
-#installing using the official dotnet-install-script for CI scenarios, with manually added dependencies
+#installing using the official dotnet-install-script for CI scenarios, with additional dependencies
 docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-b\Dockerfile .
 
-#installing using the official dotnet-install-script for CI scenarios, with manually added dependencies
+#installing the binary into a runtime-deps ubuntu20.04 base image, with additional dependencies
 docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-b\Dockerfile .
 
 #launch one of the images as a container
