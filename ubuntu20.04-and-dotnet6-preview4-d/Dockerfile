@@ -9,8 +9,7 @@ RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 RUN apt-get update \
     && apt-get install --no-install-recommends \
         curl \
-        software-properties-common \
-        openssl1.1
+        software-properties-common
 
 #.NET install
 #https://github.com/dotnet/core/blob/main/release-notes/6.0/preview/6.0.0-preview.4-install-instructions.md
