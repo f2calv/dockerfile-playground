@@ -18,15 +18,19 @@ Most recent addition for .NET 6.0;
 docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-a\Dockerfile .
 
 #installing using the official dotnet-install-script for CI scenarios, with additional dependencies
-docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-b\Dockerfile .
+docker build -t dotnet6b -f .\ubuntu20.04-and-dotnet6-preview4-b\Dockerfile .
 
 #installing the binary into a runtime-deps ubuntu20.04 base image, with additional dependencies
-docker build -t dotnet6a -f .\ubuntu20.04-and-dotnet6-preview4-b\Dockerfile .
+docker build -t dotnet6c -f .\ubuntu20.04-and-dotnet6-preview4-c\Dockerfile .
+
+#using the official preview installer into a ubuntu20.04 base image, with additional dependencies
+docker build -t dotnet6d -f .\ubuntu20.04-and-dotnet6-preview4-d\Dockerfile .
 
 #launch one of the images as a container
-docker run --rm -it --name testa dotnet6a
+#docker run --rm -it --name testa dotnet6a
 #docker run --rm -it --name testb dotnet6b
-#docker run --rm -it --name testb dotnet6c
+#docker run --rm -it --name testc dotnet6c
+docker run --rm -it --name testd dotnet6d
 
 #list installed SDKs
 dotnet --list-sdks
